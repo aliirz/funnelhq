@@ -16,8 +16,8 @@ A live version is running at http://funnelhq.herokuapp.com
 
 You can login with the following email and password: 
 
-+ admin@test.com 
-+ password
++ email: admin@test.com 
++ password: testing
 
 ## Technology
 
