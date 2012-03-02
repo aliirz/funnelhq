@@ -46,3 +46,6 @@ jQuery ($) ->
   $('#add_line_item').click ->
     cnt = $('#nested_items tr').length
     NestedFormBuilder.new_row(cnt)
+  
+  $('.remove_line_item').click ->
+    $(@).parents('tr').first().remove()
