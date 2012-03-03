@@ -2,7 +2,7 @@ class Account
   
   include Core::Mongoid::Document
   
-  CURRENCY_SYMBOLS = { :usd => '&dollar;', :gbp => '&pound;' }
+  CURRENCY_SYMBOLS = { :usd => '&dollar;', :gbp => '&pound;', :eur => '&euro;'}
   
   FREE = { :project_limit => 2, :upload_limit => 1000, :invoice_limit => 2 }
   STANDARD = { :project_limit => 50, :upload_limit => 1000, :invoice_limit => 2 }
