@@ -23,4 +23,7 @@
 
   %br
 
-= link_to 'New Project', new_project_path, :class => 'button'
+-if @user.project_limit_reached?
+  %p Your project limit has been reached. Why not upgrade to add more.
+-else
+  = link_to 'New Project', new_project_path, :class => 'button'

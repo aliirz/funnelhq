@@ -75,4 +75,11 @@ class Upload
   def path
     self.file.to_s
   end
+  
+  private
+  
+  def limit_not_exceeded
+    msg = 'Your upload limit for this plan has been reached. Please upgrade'
+    errors.add(:upload, msg) if @user.upload_limit_reached?
+  end  
 end

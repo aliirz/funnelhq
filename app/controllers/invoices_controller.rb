@@ -7,7 +7,7 @@ class InvoicesController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:view]
   
   def index
-    @invoices = @user.invoices.page(params[:page]) 
+    @invoices = @user.invoices.page(params[:page]).per(5)
     respond_with @invoice
   end
 

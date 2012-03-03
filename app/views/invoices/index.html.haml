@@ -24,5 +24,8 @@
       %td
       %td= link_to 'Delete', invoice, :method => :delete, :confirm => 'Are you sure?'
 
-= link_to 'New invoice', new_invoice_path, :class => 'button'
+-if @user.invoice_limit_reached?
+  %p Your invoice limit has been reached. Why not upgrade to add more?
+-else
+  = link_to 'New invoice', new_invoice_path, :class => 'button'
    

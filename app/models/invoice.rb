@@ -25,6 +25,8 @@ class Invoice
   
   accepts_nested_attributes_for :line_items
   
+  validate :limit_not_exceeded
+    
   validates_associated :line_items
 
   scope :within_range, lambda { |x, y|
@@ -67,5 +69,11 @@ class Invoice
   def months_as_array
     (1..12).map {|m| [Date::MONTHNAMES[m]]}
   end
-
+  
+  private
+  
+  def limit_not_exceeded
+    msg = 'You can\'t add any more invoices on this plan.'
+    errors.add(:invoice, msg) if @user.invoice_limit_reached?
+  end
 end

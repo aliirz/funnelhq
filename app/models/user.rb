@@ -11,6 +11,8 @@ class User
   EMAIL_REGEX = /^[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
   
   CODES = APP_CONFIG['invite_codes']
+  
+  USER_MODELS = ['upload', 'invoice', 'project']
 
   ## Database authenticatable
   
@@ -91,9 +93,20 @@ class User
   # @param 
   # @return []
   
-  ['upload', 'invoice', 'project'].each do |_item|
+  USER_MODELS.each do |_item|
     define_method("#{_item}_limit?") do
       self.account.get_setting(self.account.account_plan, _item)
+    end
+  end
+  
+  # Returns true if account limit reached
+  #
+  # @param 
+  # @return [Boolean]
+  
+  USER_MODELS.each do |_item|
+    define_method("#{_item}_limit_reached?") do
+      self.send(_item + 's').size >= self.account.get_setting(self.account.account_plan, _item)
     end
   end
   
@@ -182,15 +195,11 @@ class User
     key = Digest::SHA1.hexdigest(Time.now.to_s + rand(12345678).to_s)[1..10]
     self.api_key = self._id.to_s + key
   end
-  
-  # Checks the file attachment size
+    
+  # Checks the project limit has not been reached for user account
   #
   # @param 
   # @return [Boolean]
-  
-  def upload_limit_reached?
-    self.uploads.sum(:file_file_size) > UPLOAD_LIMIT
-  end
   
   # Returns the sum of all invoices for this user
   #

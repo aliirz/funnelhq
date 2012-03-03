@@ -17,6 +17,8 @@ class Project
   validates_presence_of :title
   validates_presence_of :description
   
+  validate :limit_not_exceeded
+  
   ## associations ##
   
   embedded_in :user, :inverse_of => :projects
@@ -46,4 +48,11 @@ class Project
   def active_yes_no?
     active? ? "Yes" : "No"
   end 
+  
+  private
+  
+  def limit_not_exceeded
+    msg = 'You can\'t add any more projects on this plan.'
+    errors.add(:project, msg) if @user.project_limit_reached?
+  end
 end
