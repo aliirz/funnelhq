@@ -8,9 +8,11 @@
 
   <%= devise_error_messages! %>
 
-  <div><%= f.label :invite_code %>
-  <%= f.text_field :invite_code %></div>
-
+  <%- if Rails.env.production? %>
+    <div><%= f.label :invite_code %>
+    <%= f.text_field :invite_code %></div>
+  <%- end %>
+ 
   <div><%= f.label :first_name %>
   <%= f.text_field :first_name %></div>
 

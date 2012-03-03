@@ -4,7 +4,6 @@
 %p= link_to 'Edit', edit_project_path(@project)
 
 %ul.project_meta
-  %li== Active : #{@project.active_yes_no?}
   %li== Type : #{@project.project_type}
   %li== Client : #{find_client}
 

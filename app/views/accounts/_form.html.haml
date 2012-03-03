@@ -13,7 +13,7 @@
 
   .field
     = f.label :currency
-    = f.select :currency, current_user.account.currency_array.map{|curr| [curr, curr]}
+    = f.select :currency, current_user.account.currency_array.map{|curr| [curr.upcase, curr]}
 
   .field
     = f.label :invoice_message

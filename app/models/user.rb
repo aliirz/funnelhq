@@ -76,8 +76,10 @@ class User
                   :invite_code
                   
   validates_each :invite_code, :on => :create do |record, attr, value|
-    record.errors.add attr, "Please enter correct invite code" unless
-      value && CODES.include?(value)
+    if Rails.env.production?
+      record.errors.add attr, "Please enter correct invite code" unless
+        value && CODES.include?(value)
+    end  
   end
   
   before_save :generate_api_key

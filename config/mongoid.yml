@@ -1,14 +1,20 @@
 development:
   host: localhost
   database: freelancedeck_development
+  use_utc: false
+  use_activesupport_time_zone: true
 
 test:
   host: localhost
   database: freelancedeck_test
+  use_utc: false
+  use_activesupport_time_zone: true
 
 # set these environment variables on your prod server
 production:
   uri: <%= ENV['MONGOHQ_URL'] %>
+  use_utc: false
+  use_activesupport_time_zone: true
 
   # slaves:
   #   - host: slave1.local

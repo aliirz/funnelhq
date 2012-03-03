@@ -12,7 +12,7 @@ class Account
   
   ## fields ##
 
-  field :time_zone
+  field :time_zone, :default => 'Eastern Time (US & Canada)'
   field :currency, :type => String, :default => 'gbp'
   field :invoice_message, :default => 'Thank you for your custom. We look forward to working with you again.'
   field :account_plan, :type => String, :default => 'free'
@@ -43,6 +43,15 @@ class Account
   
   def get_setting(plan, setting)
     Account.const_get(plan.upcase)["#{setting}_limit".to_sym]
+  end
+  
+  # Set the timezone for the current account
+  #
+  # @param 
+  # @return []
+  
+  def set_timezone  
+    Time.zone = self.time_zone 
   end
   
 end

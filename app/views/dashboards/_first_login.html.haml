@@ -1,1 +1,2 @@
-%p This is your first login. Get started by adding some projects or clients.
+%p== Hi #{current_user.name}. Looks like this is your first login. 
+%p== Add some #{link_to 'projects', new_project_path} or #{link_to 'clients', new_client_path} to get started.

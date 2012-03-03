@@ -49,3 +49,5 @@ ActionMailer::Base.smtp_settings = {
   :password => "",
   :enable_starttls_auto => false
 }
+
+APP_CONFIG = YAML.load_file(File.join(Rails.root, "config", "app_config.yml"))
