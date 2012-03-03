@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Expense:
+  = @expense.expense
+%p
+  %b Amount:
+  = @expense.amount
+
+= link_to 'Edit', edit_expense_path(@expense)
+\|
+= link_to 'Back', expenses_path

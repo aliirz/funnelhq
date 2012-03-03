@@ -4,7 +4,12 @@ Baseapp::Application.routes.draw do
   
   get "pages/index"
   
-  devise_for :users, :path_names => { :sign_in => 'login', :sign_up => 'new', :sign_out => 'logout', :password => 'password', :confirmation => 'confirmation' }
+  devise_for :users, 
+             :path_names => { :sign_in => 'login', 
+                              :sign_up => 'new', 
+                              :sign_out => 'logout', 
+                              :password => 'password', 
+                              :confirmation => 'confirmation' }
   
   # When we log in a user through Devise, redirect them to the dashboard
   
@@ -22,6 +27,9 @@ Baseapp::Application.routes.draw do
   resources :clients
   resources :tasks
   resources :invoices
+  resources :expenses
+  
+  match "finances", :to => 'finances#index'
   
   match 'uploads/:user_id/share/:id', :to => 'uploads#share' 
   match 'invoices/view/:id', :to => 'invoices#view' 

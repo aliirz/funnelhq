@@ -1,7 +1,7 @@
 %h1 Invoices
 
 %h3== Total to date: #{user_currency(current_user.invoice_total)}
-%h3== This Month : #{user_currency(current_user.amount_invoiced_for_month(Time.now.strftime('%A')))}
+%h3== This Month : #{user_currency(current_user.invoiced_for(Time.now.strftime('%A')))}
 
 
 = render 'shared/chart'
@@ -28,4 +28,6 @@
   %p Your invoice limit has been reached. Why not upgrade to add more?
 -else
   = link_to 'New invoice', new_invoice_path, :class => 'button'
+
+= link_to 'New expense', new_expense_path, :class => 'button'
    

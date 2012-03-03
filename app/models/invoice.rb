@@ -7,8 +7,6 @@ class Invoice
   
   before_save :calculate_invoice_total
   
-  ## validations ##
-  
   ## fields ##
   
   field :invoice_id, :type => Integer
@@ -25,9 +23,13 @@ class Invoice
   
   accepts_nested_attributes_for :line_items
   
+  ## validations ##
+  
   validate :limit_not_exceeded
     
   validates_associated :line_items
+  
+  ## scope ##
 
   scope :within_range, lambda { |x, y|
     where(:date => {'$gte' => x,'$lt' => y})

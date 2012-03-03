@@ -64,6 +64,7 @@ class User
   embeds_many :tasks
   embeds_many :invoices
   embeds_many :issues
+  embeds_many :expenses
 
   ## Attr Accessors ##
   
@@ -195,12 +196,7 @@ class User
     key = Digest::SHA1.hexdigest(Time.now.to_s + rand(12345678).to_s)[1..10]
     self.api_key = self._id.to_s + key
   end
-    
-  # Checks the project limit has not been reached for user account
-  #
-  # @param 
-  # @return [Boolean]
-  
+
   # Returns the sum of all invoices for this user
   #
   # @param 
@@ -215,8 +211,28 @@ class User
   # @param [String] the start of a month i.e amount_invoiced_for_month('january')
   # @return [Float] the total amount invoiced
   
-  def amount_invoiced_for_month(m)
+  def invoiced_for(m)
     d = Date.parse(m)
     self.invoices.within_range(d, ((d + 1.month) - 1.day)).sum(:total)
+  end
+  
+  # Returns the sum of all expenses for this user
+  #
+  # @param 
+  # @return [Float]
+  
+  def expense_total
+    self.expenses.sum(:amount).to_f
+  end
+  
+  # Returns the amount invoiced for a given month
+  #
+  # @param [String] the start of a month i.e amount_invoiced_for_month('january')
+  # @return [Float] the total amount invoiced
+  
+  def expenses_for(m)
+    d = Date.parse(m)
+    exp = self.expenses.within_range(d, ((d + 1.month) - 1.day)).sum(:amount)
+    exp.nil? ? 0 : exp
   end
 end

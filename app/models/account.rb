@@ -43,15 +43,5 @@ class Account
   
   def get_setting(plan, setting)
     Account.const_get(plan.upcase)["#{setting}_limit".to_sym]
-  end
-  
-  # Set the timezone for the current account
-  #
-  # @param 
-  # @return []
-  
-  def set_timezone  
-    Time.zone = self.time_zone 
-  end
-  
+  end  
 end

@@ -1,0 +1,12 @@
+= form_for @expense do |f|
+  
+  = render 'shared/error_messages', :target => @expense
+
+  .field
+    = f.label :expense
+    = f.text_field :expense
+  .field
+    = f.label :amount
+    = f.number_field :amount
+  .actions
+    = f.submit 'Save'

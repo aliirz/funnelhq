@@ -22,18 +22,18 @@ function drawMouseoverVisualization() {
   data.addColumn('number', 'Expenses');
 
   data.addRows([
-    ['Jan', <%= current_user.amount_invoiced_for_month('january')%>, 0],
-    ['Feb', <%= current_user.amount_invoiced_for_month('february')%>, 0],
-    ['March', <%= current_user.amount_invoiced_for_month('march')%>, 0],
-    ['April', <%= current_user.amount_invoiced_for_month('april')%>, 0],
-    ['May', <%= current_user.amount_invoiced_for_month('may')%>, 0],
-    ['June', <%= current_user.amount_invoiced_for_month('june')%>, 0],
-    ['July', <%= current_user.amount_invoiced_for_month('july')%>, 0],
-    ['Aug', <%= current_user.amount_invoiced_for_month('august')%>, 0],
-    ['Sept', <%= current_user.amount_invoiced_for_month('september')%>, 0],
-    ['Oct', <%= current_user.amount_invoiced_for_month('october')%>, 0],
-    ['Nov', <%= current_user.amount_invoiced_for_month('november')%>, 0],
-    ['Dec', <%= current_user.amount_invoiced_for_month('december')%>, 0],
+    ['Jan', <%=current_user.invoiced_for('january')%>,<%=current_user.expenses_for('january')%>],
+    ['Feb', <%=current_user.invoiced_for('february')%>,<%=current_user.expenses_for('february')%>],
+    ['March', <%=current_user.invoiced_for('march')%>,<%=current_user.expenses_for('march')%>],
+    ['April', <%=current_user.invoiced_for('april')%>,<%=current_user.expenses_for('april')%>],
+    ['May', <%=current_user.invoiced_for('may')%>,<%=current_user.expenses_for('may')%>],
+    ['June', <%=current_user.invoiced_for('june')%>,<%=current_user.expenses_for('june')%>],
+    ['July', <%=current_user.invoiced_for('july')%>,<%=current_user.expenses_for('july')%>],
+    ['Aug', <%=current_user.invoiced_for('august')%>,<%=current_user.expenses_for('august')%>],
+    ['Sept', <%=current_user.invoiced_for('september')%>,<%=current_user.expenses_for('september')%>],
+    ['Oct', <%=current_user.invoiced_for('october')%>,<%=current_user.expenses_for('october')%>],
+    ['Nov', <%=current_user.invoiced_for('november')%>,<%=current_user.expenses_for('november')%>],
+    ['Dec', <%=current_user.invoiced_for('december')%>,<%=current_user.expenses_for('december')%>],
   ]);
 	
   barsVisualization = new google.visualization.ColumnChart(document.getElementById('chart'));
@@ -41,7 +41,7 @@ function drawMouseoverVisualization() {
   barsVisualization.draw(data, {
     width: 920, 
     height: 300,
-    colors: ['#537085', '#EEEEEE'],
+    colors: ['#537085', '#AAAAAA'],
     chartArea: {left:40,top:30, width:"75%",height:"70%"},
     legendTextStyle: {color:'#666666'}
   });
