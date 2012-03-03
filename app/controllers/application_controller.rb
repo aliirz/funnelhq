@@ -33,13 +33,7 @@ class ApplicationController < ActionController::Base
   # Render the correct layout for a given action
 
   def layout_by_resource
-    if controller_name == 'registrations' && action_name == 'new'
-      'login'
-    elsif controller_name == 'registrations' && action_name == 'create'
-      'login'
-    elsif controller_name == 'passwords' && action_name == 'new'
-      'login'
-    elsif controller_name == 'sessions' && action_name == 'new'
+    if devise_controller? and action_name != 'edit'
       'login'
     else
       'application'
