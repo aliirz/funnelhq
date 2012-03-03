@@ -2,9 +2,9 @@
 
 Funnel is an open source business management tool for freelancers.
 
-This is the open source version of the app running at funnelhq.com aimed at those who want to host this app on their own servers.
+This is the open source version of the app running at funnelhq.com aimed at those who want to host this app on their own servers. 
 
-It's built with Ruby on Rails, Clojure and MongoDB.
+Funnel is built on Ruby on Rails, Clojure and MongoDB.
 
 ![](http://funnelhq.com/public/images/3.jpg)
 
@@ -12,7 +12,7 @@ With Funnel you can manage your entire business from one centralised location.
 
 This project is still in development
 
-A live version is running at http://funnelhq.herokuapp.com
+A live version is running at http://funnelhq.herokuapp.com. Please don't use the live site for anything other than demo purposes as it's likely that the database will be reset prior to launch.
 
 You can login with the following email and password: 
 
@@ -32,7 +32,20 @@ This app uses
 
 + Install MongoDB
 + Set up your database config in config/mongoid.yml
-+ Install dependencies
++ Install dependencies (bundle install)
++ Set environment variables
++ Run rake db:seed
+
+## Setting environment variables
+
+Due to the open source nature of this app, environment variables are used to set private information such as mail config settings etc. If you're running OSX, you can set an environment var like this.
+ 
+    export MAIL_USER=awesomeuser@gmail.com
+
+The following environment variables are required
+
++ MAIL_USER
++ MAIL_PASS 
 
 ## Creating a test user
 
@@ -58,9 +71,17 @@ This command does 3 things
 + Checks your app into git
 + Pushes the app up to Heroku
 
+## API
+
+Funnel comes with a restful API for extracting user information.
+
+Example API call to get all projects
+
+    GET api_v1/:user_api_key/projects.xml
+
 ## License 
 
-This software is provided free for users hosting it on their on system. 
+This software is provided free for users hosting it on their on system.
 
 A hosted version will be available at funnelhq.com.
 

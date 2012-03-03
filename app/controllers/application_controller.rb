@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  
   protect_from_forgery
   
   # Only skip this for static pages
@@ -19,7 +20,7 @@ class ApplicationController < ActionController::Base
     @user = current_user
   end
   
-  #
+  # Set the time zone for a user account
   
   def set_time_zone
     old_time_zone = Time.zone

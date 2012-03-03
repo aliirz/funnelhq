@@ -64,13 +64,13 @@ end
 ActionMailer::Base.delivery_method = :smtp
 
 ActionMailer::Base.smtp_settings = {
-  :address => "",
+  :address => "smtp.gmail.com",
   :port => 587,
-  :domain => "",
+  :domain => "funnelhq.com",
   :authentication => :login,
-  :user_name => "",
-  :password => "",
-  :enable_starttls_auto => false
+  :user_name => ENV['MAIL_USER'],
+  :password => ENV['MAIL_PASS'],
+  :enable_starttls_auto => true
 }
 
 APP_CONFIG = YAML.load_file(File.join(Rails.root, "config", "app_config.yml"))

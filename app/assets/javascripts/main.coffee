@@ -20,7 +20,7 @@ NestedFormBuilder =
     a = NestedFormBuilder.gen_input(id, "qty")  
     b = NestedFormBuilder.gen_input(id, "description")
     c = NestedFormBuilder.gen_input(id, "price") 
-    el = "<tr><td>" + a + "</td><td>" + b + "</td><td>" + c + "</td></tr>"
+    el = "<tr><td>" + a + "</td><td>" + b + "</td><td>" + c + "</td><td><a class='remove_line_item'>Remove</a></tr>"
     $('#nested_items').append(el)
   
 NavUtils =
@@ -47,5 +47,5 @@ jQuery ($) ->
     cnt = $('#nested_items tr').length
     NestedFormBuilder.new_row(cnt)
   
-  $('.remove_line_item').click ->
+  $(document).on 'click', '.remove_line_item', ->
     $(@).parents('tr').first().remove()

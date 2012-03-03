@@ -2,10 +2,11 @@ class UserMailer < ActionMailer::Base
   
   default :from => "support@funnelhq.com"
 
-  def test_email(user)
+  def welcome_email(user)
     @user = user
     @url  = "http://www.funnelhq.com"
-    mail(:to => user.email, :subject => "This is a test email")
+    mail_to = Rails.env.production? ? user.email : user.email
+    mail(:to => mail_to, :subject => "Welcome to Funnel HQ")
   end
   
 end
