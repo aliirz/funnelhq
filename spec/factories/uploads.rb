@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :upload do
-    title "MyString"
-    category "MyString"
+    title "Important Contract"
+    category "Documents"
   end
 end

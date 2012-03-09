@@ -32,8 +32,10 @@ h3 {
 
 =======================================*/
 body {
-  background: #f8f8f7;
+  background: #fafafa;
   border-top: 10px solid #343f4a; }
+
+p {font-family:$serif;}
 
 .container {
   max-width: 1000px;
@@ -48,7 +50,7 @@ body {
   #header #logo {
     font-size: 30px;
     float: left;
-    line-height: 80px;
+    line-height: 74px;
     text-transform: uppercase;
     color: #343f4a; }
     #header #logo a {color: #343f4a;}
@@ -60,7 +62,8 @@ body {
     #header ul li {
       display: inline;
       margin-left:10px;
-      line-height: 80px; }
+      position:relative;
+      top:32px; }
     #header ul #plans-link {
       text-transform: uppercase;
       font-weight: bold;
@@ -83,7 +86,7 @@ body {
   margin-bottom: 20px; }
   #main h1, #main h2 {
     font-family: "CallunaRegular", Georgia, serif;
-    font-weight: 500; }
+    font-weight: 100; }
 
 #section1 {
   height: 270px;
@@ -92,6 +95,7 @@ body {
     text-align: center;
     clear: both;
     position: relative;
+    font-weight:100;
     top: 24px; }
   #section1 #tagline {
     text-align: center;
@@ -155,6 +159,7 @@ body {
   #section2 .promo {
     width: 300px;
     height: 200px;
+    border:1px solid #ddd;
     background: #ddd;
     display: block;
     margin-bottom: 40px; }
@@ -166,6 +171,11 @@ body {
     color: #7b838b;
     font-style: italic;
     font-weight: 100; }
+
+.promo:hover{
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+	@include transition();
+}
 
 #section3 {
   width: 860px;
@@ -226,6 +236,8 @@ footer {
     text-align: center; }
 
 .button.orange {color:#fff}
+
+.twitter-share-button {position:absolute;left:20px;top:40px;}
 
 /**====================================
 
