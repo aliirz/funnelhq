@@ -15,6 +15,7 @@ class Upload
           :secret_access_key => ENV['S3_SECRET']
         },
         :bucket => ENV['S3_BUCKET'],
+        :s3_permissions => :private,
         :path => ":user_id/:attachment/:id/:filename"
   else
     has_mongoid_attached_file :file 

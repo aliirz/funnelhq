@@ -3,6 +3,7 @@ Baseapp::Application.routes.draw do
   # The front end site
   
   get "pages/index"
+  match "/pricing", :to => "pages#pricing"
   
   devise_for :users, 
              :path_names => { :sign_in => 'login', 
@@ -44,6 +45,6 @@ Baseapp::Application.routes.draw do
      
   # Default route
   
-  root :to => redirect("/users/login")
+  root :to => "pages#index"
 
 end

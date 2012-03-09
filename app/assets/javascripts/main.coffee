@@ -49,3 +49,4 @@ jQuery ($) ->
   
   $(document).on 'click', '.remove_line_item', ->
     $(@).parents('tr').first().remove()
+

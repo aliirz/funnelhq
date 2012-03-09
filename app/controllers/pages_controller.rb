@@ -10,4 +10,7 @@ class PagesController < ApplicationController
   
   def index
   end
+  
+  def pricing
+  end
 end

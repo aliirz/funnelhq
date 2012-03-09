@@ -1,0 +1,244 @@
+@import "lib/core";
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 20px;
+  color: #0f1113;
+  font-weight: bold;
+  line-height: 1.5;
+  font-family: "Lato", Helvetica, Arial, sans-serif; }
+
+h1 {
+  font-size: 42px;
+  font-size: 4.2rem;
+  margin-bottom: 10px; }
+
+h2 {
+  font-size: 32px;
+  font-size: 3.2rem;
+  margin-bottom: 10px; }
+
+h3 {
+  font-size: 24px;
+  font-size: 2.4rem;
+  line-height: 20px; }
+
+/**====================================
+
+@Project MyProject
+@Type Website
+@Version 1.0
+@Date
+@Author [Name]
+
+=======================================*/
+body {
+  background: #f8f8f7;
+  border-top: 10px solid #343f4a; }
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  overflow: hidden; }
+
+#header {
+  height: 80px;
+  width: 940px;
+  margin: 0 auto; }
+  #header #logo {
+    font-size: 30px;
+    float: left;
+    line-height: 80px;
+    text-transform: uppercase;
+    color: #343f4a; }
+    #header #logo a {color: #343f4a;}
+    #header #logo a span {
+      font-family: "CallunaRegular", Georgia, serif;
+      font-weight: normal; }
+  #header ul {
+    float: right; }
+    #header ul li {
+      display: inline;
+      margin-left:10px;
+      line-height: 80px; }
+    #header ul #plans-link {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-family: "Lato", Helvetica, Arial, sans-serif; }
+    #header ul #have-account {
+      font-family: "CallunaRegular", Georgia, serif;
+      font-weight: 500; }
+    #header ul #sign-in a {
+      color: #f95e0a;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-family: "Lato", Helvetica, Arial, sans-serif; }
+
+#main {
+  background: white url(/assets/static/main_bg.jpg) repeat-x center top;
+  width: 940px;
+  padding: 0 20px 80px 20px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  margin-bottom: 20px; }
+  #main h1, #main h2 {
+    font-family: "CallunaRegular", Georgia, serif;
+    font-weight: 500; }
+
+#section1 {
+  height: 270px;
+  width: 940px; }
+  #section1 #headline {
+    text-align: center;
+    clear: both;
+    position: relative;
+    top: 24px; }
+  #section1 #tagline {
+    text-align: center;
+    font-size: 24px;
+    color: #7b838b;
+    position: relative;
+    top: 10px; }
+  #section1 #sign-up-link {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    top: 40px;
+    font-size: 18px;
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    background: #fa7f3c;
+    /* for non-css3 browsers */
+    background: -webkit-gradient(linear, left top, left bottom, from(#fa7f3c), to(#f95e0a));
+    /* for webkit browsers */
+    background: -moz-linear-gradient(top, #fa7f3c, #f95e0a);
+    /* for firefox 3.6+ */
+    cursor: pointer;
+    font-weight: bold;
+    color: #333333;
+    display: inline-block;
+    border: 1px solid #e45406;
+    text-align: center;
+    padding: 8px 12px 6px 12px;
+    min-height: 26px;
+    line-height: 26px;
+    min-width: 80px;
+    color: #FFF;
+    display: block;
+    margin: 0 auto;
+    width: 200px; }
+    #section1 #sign-up-link:hover {
+      background: #fa6e23;
+      /* for non-css3 browsers */
+      background: -webkit-gradient(linear, left top, left bottom, from(#fa6e23), to(#fa7f3c));
+      /* for webkit browsers */
+      background: -moz-linear-gradient(top, #fa6e23, #fa7f3c);
+      /* for firefox 3.6+ */ }
+    #section1 #sign-up-link span {
+      font-family: 'Georgia';
+      font-style: italic;
+      font-weight: 100;
+      text-transform: none; }
+
+#section1.short {
+  height: 200px; }
+
+#section2 {
+  width: 940px; }
+  #section2 #upsell {
+    height: 440px; }
+  #section2 .promo {
+    width: 300px;
+    height: 200px;
+    background: #ddd;
+    display: block;
+    margin-bottom: 40px; }
+  #section2 .promo img {display:none;}
+  #section2 #quote {
+    text-align: center;
+    clear: both;
+    margin-bottom: 60px;
+    color: #7b838b;
+    font-style: italic;
+    font-weight: 100; }
+
+#section3 {
+  width: 860px;
+  margin: 0 auto; }
+  #section3 h2 {
+    font-family: 'Lato';
+    font-weight: bold;
+    font-size: 24px; }
+  #section3 p {
+    font-size: 18px; 
+    font-family:$serif;}
+  #section3 a {
+    color: #f95e0a;
+    font-weight: bold;
+    font-family: 'Lato';
+    text-transform: uppercase; }
+  #section3 .left-section {
+    text-align: left; }
+  #section3 .right-section {
+    text-align: right; }
+
+footer {
+  width: 980px;
+  margin: 20px auto;
+  background: #eee;
+  min-height: 200px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px; }
+
+#legal {
+  width: 940px;
+  margin: 0 auto; }
+  #legal p {
+    font-family: 'Lato'; }
+
+#sign-up-table thead {
+  font-weight: bold; }
+#sign-up-table td {
+  background: #fff;
+  font-size: 16px; }
+#sign-up-table tr:nth-child(even) td {
+  background: #f5f5f5; }
+#sign-up-table thead td {
+  background: #eee; }
+#sign-up-table .opaque {
+  background: transparent; }
+
+#faq {
+  clear: both;
+  overflow: hidden;
+  margin-bottom:40px;
+  margin-top: 40px; }
+  #faq h2 {
+    margin-bottom: 40px;
+    text-align: center; }
+
+.button.orange {color:#fff}
+
+/**====================================
+
+Media Queries must be below main css to override existing styles
+
+=======================================*/
+/*
+
+Mobile First Media Query Sheet.
+www.owainlewis.com
+
+*/
+/*
+Reset all columns to display as stacked elements i.e for mobile
+*/
+/* Image replacements for retina display */
