@@ -16,7 +16,8 @@ class Upload
         },
         :bucket => ENV['S3_BUCKET'],
         :s3_permissions => :private,
-        :path => ":user_id/:attachment/:id/:filename"
+        :url => "/assets/:user_id/:id/:style/:filename"
+        
   else
     has_mongoid_attached_file :file 
   end

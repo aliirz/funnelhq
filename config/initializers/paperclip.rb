@@ -1,3 +1,7 @@
-Paperclip.interpolates :user_id do |attachment, style|
-  attachment.instance.current_user.id
+module Paperclip
+  module Interpolations
+    def user_id(attachment, style)
+      current_user.id
+    end
+  end
 end
