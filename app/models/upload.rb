@@ -15,7 +15,7 @@ class Upload
           :secret_access_key => ENV['S3_SECRET']
         },
         :bucket => ENV['S3_BUCKET'],
-        :s3_permissions => :private,
+        :s3_permissions => :public,
         :url => "/assets/:user_id/:id/:style/:filename"
         
   else
