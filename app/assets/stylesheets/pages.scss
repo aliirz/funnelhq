@@ -210,9 +210,10 @@ footer {
 
 #legal {
   width: 940px;
-  margin: 0 auto; }
+  margin: 0 auto 40px auto; }
   #legal p {
-    font-family: 'Lato'; }
+    font-family: 'Lato';
+    margin-bottom:5px; }
 
 #sign-up-table thead {
   font-weight: bold; }
@@ -237,7 +238,7 @@ footer {
 
 .button.orange {color:#fff}
 
-.twitter-share-button {position:absolute;left:20px;top:40px;}
+.twitter-share-button {position:absolute;left:20px;top:20px;}
 
 /**====================================
 

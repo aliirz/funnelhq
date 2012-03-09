@@ -1,10 +1,19 @@
 (ns funnelhq.core
-  (use 'clojure.java.io :as io]))
+  (use [clojure.java.io :as io]))
 
-(def *rails-log-file* "log/development.log")
+(def ^{:dynamic true} *rails-log-file* "log/development.log")
 
-(defn lazy-parse-log [src]
-  "Parse the log into a lazy seq"
-  (with-open [reader (io/reader src)]
-    (line-seq reader)))
+(defprotocol FunnelIO
+  "A protocol for reading and writing"
+  (read-file [this])
+  (write-file [this]))
+
+(extend-protocol FunnelIO
+  String
+  (read-file [file] 
+    (with-open [rdr (clojure.java.io/reader file)]
+      (reduce conj [] (line-seq rdr))))
+  (write-file [text dest & opts]
+    (with-open [w (clojure.java.io/writer dest ~@opts)]
+	    (.write w text))))
 
