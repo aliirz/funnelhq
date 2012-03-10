@@ -3,7 +3,10 @@ Baseapp::Application.routes.draw do
   # The front end site
   
   get "pages/index"
+  
   match "/pricing", :to => "pages#pricing"
+  
+  match 'accounts/new/:plan_name', :to => 'accounts#new', :as => 'signup'
   
   devise_for :users, 
              :path_names => { :sign_in => 'login', 

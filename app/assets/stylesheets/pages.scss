@@ -82,6 +82,7 @@ p {font-family:$serif;}
   width: 940px;
   padding: 0 20px 80px 20px;
   margin: 0 auto;
+  clear:both;
   border: 1px solid #ccc;
   margin-bottom: 20px; }
   #main h1, #main h2 {
@@ -239,6 +240,21 @@ footer {
 .button.orange {color:#fff}
 
 .twitter-share-button {position:absolute;left:20px;top:20px;}
+
+/*
+
+ Signup form
+
+*/
+
+#signup_form {
+  padding:80px 0;
+  overflow:hidden;
+	
+  input {
+    max-width:400px;	
+  }
+}
 
 /**====================================
 

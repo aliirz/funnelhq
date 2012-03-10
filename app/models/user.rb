@@ -50,9 +50,9 @@ class User
     
   ## Validation ##
      
-  validates_presence_of :first_name, :last_name
+  #validates_presence_of :first_name, :last_name
   
-  validates :email, presence: true, uniqueness: true, format: { with: EMAIL_REGEX }
+  #validates :email, presence: true, uniqueness: true, format: { with: EMAIL_REGEX }
   
   ## associations ##
   
@@ -85,9 +85,9 @@ class User
     end  
   end
   
-  before_save :generate_api_key
+  #before_save :generate_api_key
   
-  before_create :create_admin_account
+  #before_create :create_admin_account
   
   # Define methods for accessing account limit information
   #
@@ -105,9 +105,9 @@ class User
   # @param 
   # @return [Boolean]
   
-  USER_MODELS.each do |_item|
+  ['upload', 'project'].each do |_item|
     define_method("#{_item}_limit_reached?") do
-      self.send(_item + 's').size >= self.account.get_setting(self.account.account_plan, _item)
+      self.send(_item + 's').size > self.account.get_setting(self.account.account_plan, _item)
     end
   end
   

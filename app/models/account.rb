@@ -4,11 +4,13 @@ class Account
   
   CURRENCY_SYMBOLS = { :usd => '&dollar;', :gbp => '&pound;', :eur => '&euro;'}
   
-  FREE = { :project_limit => 2, :upload_limit => 1000, :invoice_limit => 2 }
-  STANDARD = { :project_limit => 50, :upload_limit => 1000, :invoice_limit => 2 }
-  PRO = { :project_limit => 1000, :upload_limit => 1000, :invoice_limit => 2 }
+  FREE = { :project_limit => 2, :upload_limit => 10000, :invoice_limit => 2 }
+  STANDARD = { :project_limit => 20, :upload_limit => 50000, :invoice_limit => 10 }
+  PRO = { :project_limit => 100, :upload_limit => 100000, :invoice_limit => 50 }
   
   references_many :users, :inverse_of => :account
+  
+  accepts_nested_attributes_for :users
   
   ## fields ##
 

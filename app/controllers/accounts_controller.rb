@@ -6,14 +6,49 @@ class AccountsController < ApplicationController
   
   before_filter :find_account, :only => [:show, :edit, :update]
   
+  skip_before_filter :authenticate_user!, :only => [:new, :create]
+  
   def index
     @accounts = Account.all
   end
+  
+  def new
+    @account = Account.new
+    @account.users.build
+    @plan = params[:plan_name]
+    
+    respond_to do |format|
+       format.html {render :layout => 'pages'}
+    end
+  end
+  
+  def create
+    
+    @account = Account.new
+    @account.users.build(params[:account][:users])
+    
+    #@account.account_plan_id = @account_plan.id
+  
+    respond_to do |format|
+      if @account.save
+        format.html {
+          redirect_to "/"
+          #@account.recurly_account_code = @account.id
+          #@account.save
+          #redirect_to @account.account_plan.recurly_signup_link(@account.users.first)
+        }
+      else
+        format.html { render :new, :layout => 'pages' }
+      end
+    end
+  end
 
   def show
+    
   end
 
   def edit
+    
   end
   
   def update
