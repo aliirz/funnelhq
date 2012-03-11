@@ -110,6 +110,14 @@ class User
       self.send(_item + 's').size > self.account.get_setting(self.account.account_plan, _item)
     end
   end
+
+  #
+  
+  def invoice_limit_reached?
+    this_month = Date.today.strftime("%B").downcase
+    limit = self.account.get_setting(self.account.account_plan, 'invoice')
+    self.invoice_count_for(this_month) > limit
+  end
   
   # Before a user gets created we need to associate them with an account
   #
@@ -214,6 +222,16 @@ class User
   def invoiced_for(m)
     d = Date.parse(m)
     self.invoices.within_range(d, ((d + 1.month) - 1.day)).sum(:total)
+  end
+  
+  # Returns the number of invoices for a month
+  #
+  # @param [String] the start of a month i.e amount_invoiced_for_month('january')
+  # @return [Int] the number of invoices for a given month
+  
+  def invoice_count_for(m)
+    d = Date.parse(m)
+    self.invoices.within_range(d, ((d + 1.month) - 1.day)).count
   end
   
   # Returns the sum of all expenses for this user
