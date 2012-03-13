@@ -31,7 +31,7 @@ class AccountsController < ApplicationController
     respond_to do |format|
       if @account.save
         format.html {
-          redirect_to login_path
+          redirect_to "http://funnelhq.com/users/login"
           #@account.recurly_account_code = @account.id
           #@account.save
           #redirect_to @account.account_plan.recurly_signup_link(@account.users.first)
