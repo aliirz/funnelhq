@@ -8,7 +8,7 @@ class Account
   STANDARD = { :project_limit => 20, :upload_limit => 50000, :invoice_limit => 10 }
   PRO = { :project_limit => 100, :upload_limit => 100000, :invoice_limit => 50 }
   
-  references_many :users, :inverse_of => :account
+  references_many :users, :inverse_of => :account, :autosave => true
   
   accepts_nested_attributes_for :users
   

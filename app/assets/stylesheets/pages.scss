@@ -78,7 +78,7 @@ p {font-family:$serif;}
       font-family: "Lato", Helvetica, Arial, sans-serif; }
 
 #main {
-  background: white url(/assets/static/main_bg.jpg) repeat-x center top;
+  background: white url(/assets/static/main_bg.png) repeat-x center top;
   width: 940px;
   padding: 0 20px 80px 20px;
   margin: 0 auto;
@@ -248,7 +248,7 @@ footer {
 */
 
 #signup_form {
-  padding:80px 0;
+  padding:40px 0;
   overflow:hidden;
 	
   input {

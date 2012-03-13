@@ -24,15 +24,14 @@ class AccountsController < ApplicationController
   
   def create
     
-    @account = Account.new
-    @account.users.build(params[:account][:users])
-    
+    @account = Account.new(params[:account])
+ 
     #@account.account_plan_id = @account_plan.id
   
     respond_to do |format|
       if @account.save
         format.html {
-          redirect_to "/"
+          redirect_to login_path
           #@account.recurly_account_code = @account.id
           #@account.save
           #redirect_to @account.account_plan.recurly_signup_link(@account.users.first)
@@ -62,6 +61,13 @@ class AccountsController < ApplicationController
   end
   
   private
+  
+  #
+  #
+  def complete_signup
+    
+  end
+  
   
   def find_account
     @account = Account.find(params[:id])

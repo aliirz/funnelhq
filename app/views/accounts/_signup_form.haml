@@ -5,7 +5,12 @@
     .form
       = form_for @account do |f|
 
-        = render "shared/error_messages", :target => @account
+        -if @account.errors.any?
+          #error_explanation
+            %h4= "#{pluralize(@account.errors.count, "error")} prohibited this #{@account.class.to_s} from being saved:"
+            %ul
+              - @account.errors.each do |msg, val|
+                %li= "#{msg} #{val}"
 
         = f.fields_for :users do |user|
 
@@ -22,12 +27,12 @@
           = user.password_field :password
 
           = user.label :password_confirmation
-          %p.summary Your password confirmation
           = user.password_field :password_confirmation
-
-        %h2 Your billing information
-        %p== You will now be sent to our billing page. We need this information to verify that you have a valid credit card and to help reduce fraud. You won’t be charged a thing unless you keep your account open longer than the 30 day free trial, which will end on #{Date.today + 30.days}
-        = hidden_field_tag :account_plan, @plan
+        
+        - if 1 == 2
+          %h2 Your billing information
+          %p== You will now be sent to our billing page. We need this information to verify that you have a valid credit card and to help reduce fraud. You won’t be charged a thing unless you keep your account open longer than the 30 day free trial, which will end on #{Date.today + 30.days}
+          = hidden_field_tag :account_plan, @plan
         = f.submit 'Register', :class => 'button'
 
         %p By clicking register you are agreeing to our terms and conditions.
