@@ -51,9 +51,9 @@ class User
     
   ## Validation ##
      
-  #validates_presence_of :first_name, :last_name
+  validates_presence_of :first_name, :last_name
   
-  #validates :email, presence: true, uniqueness: true, format: { with: EMAIL_REGEX }
+  validates :email, presence: true, uniqueness: true, format: { with: EMAIL_REGEX }
   
   ## associations ##
   
@@ -86,9 +86,7 @@ class User
     #end  
   #end
   
-  #before_save :generate_api_key
-  
-  #before_create :create_admin_account
+  before_save :generate_api_key
   
   # Define methods for accessing account limit information
   #
@@ -119,17 +117,7 @@ class User
     limit = self.account.get_setting(self.account.account_plan, 'invoice')
     self.invoice_count_for(this_month) > limit
   end
-  
-  # Before a user gets created we need to associate them with an account
-  #
-  # @param 
-  # @return []
-  
-  def create_admin_account
-    account = Account.create!
-    self.account = account
-    self.account_owner = true
-  end
+
   
   # Define some helper method for user roles
   #
