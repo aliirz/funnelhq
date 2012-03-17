@@ -38,15 +38,15 @@ class User
   field :signup_complete,    :type => String
   
   ## Fields ##
+
   field :account_owner, :type => Boolean, :default => false
   field :first_name, :type => String
   field :last_name, :type => String
   field :avatar_url, :type => String
   field :api_key, :type => String
   field :role, :type => String, :default => 'admin'
-  
   field :invite_code, :type => String
-
+  
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
     
   ## Validation ##

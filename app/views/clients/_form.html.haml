@@ -4,15 +4,15 @@
 
   .field
     = f.label :first_name
-    = f.text_field :first_name
+    = f.text_field :first_name, :placeholder => 'client first name'
   .field
     = f.label :last_name
-    = f.text_field :last_name
+    = f.text_field :last_name, :placeholder => 'client last name'
   .field
     = f.label :email
-    = f.text_field :email
+    = f.text_field :email, :placeholder => 'email address for client'
   .field
     = f.label :telephone
-    = f.text_field :telephone
+    = f.text_field :telephone, :placeholder => 'landline number'
   .actions
     = f.submit 'Save'

@@ -1,25 +1,31 @@
 %h1 Listing active tasks
 
-%p A place to organise your daily tasks
+- if @tasks.present?
 
-%p= paginate @tasks
+  %p A place to organise your daily tasks
 
-%table
-  %tr
-    %th Title
-    %th Status
-    %th Project
-    %th
-    %th
+  %p= paginate @tasks
 
-  - @tasks.each do |task|
+  %table
     %tr
-      %td= task.title
-      %td= task.status
-      %td= task.project_title
-      %td= link_to 'Edit', edit_task_path(task)
-      %td= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete
+      %th Title
+      %th Status
+      %th Project
+      %th
+      %th
 
-%br
+    - @tasks.each do |task|
+      %tr
+        %td= task.title
+        %td= task.status
+        %td= task.project_title
+        %td= link_to 'Edit', edit_task_path(task)
+        %td= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete
+
+  %br
+
+- else 
+
+  %p You don't have any tasks yet.
 
 = link_to 'New Task', new_task_path, :class => 'button'

@@ -120,5 +120,4 @@ describe ClientsController do
       response.should redirect_to(clients_url)
     end
   end
-
 end

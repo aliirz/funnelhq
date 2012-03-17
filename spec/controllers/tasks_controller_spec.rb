@@ -120,5 +120,4 @@ describe TasksController do
       response.should redirect_to(tasks_url)
     end
   end
-
 end

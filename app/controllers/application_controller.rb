@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :find_user
   
-  around_filter :set_time_zone
+  #around_filter :set_time_zone
   
   layout :layout_by_resource
   
@@ -23,11 +23,11 @@ class ApplicationController < ActionController::Base
   # Set the time zone for a user account
   
   def set_time_zone
-    old_time_zone = Time.zone
-    Time.zone = current_user.account.time_zone if user_signed_in?
-    yield
-  ensure
-    Time.zone = old_time_zone
+    #old_time_zone = Time.zone
+    #Time.zone = current_user.account.time_zone if current_user && user_signed_in?
+    #yield
+  #ensure
+    #Time.zone = old_time_zone
   end
 
   # Render the correct layout for a given action

@@ -119,5 +119,4 @@ describe UploadsController do
       response.should redirect_to(uploads_url)
     end
   end
-
 end

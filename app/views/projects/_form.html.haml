@@ -4,7 +4,7 @@
 
   .field
     = f.label :title
-    = f.text_field :title
+    = f.text_field :title, :placeholder => 'a title for your project'
 
   .field
     = f.label :project_type
@@ -16,7 +16,7 @@
 
   .field
     = f.label :description
-    = f.text_field :description
+    = f.text_field :description, :placeholder => 'a brief description of the project'
 
   .actions
     = f.submit 'Save'

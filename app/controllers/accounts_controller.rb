@@ -42,12 +42,10 @@ class AccountsController < ApplicationController
     end
   end
 
-  def show
-    
+  def show  
   end
 
   def edit
-    
   end
   
   def update
@@ -64,8 +62,7 @@ class AccountsController < ApplicationController
   
   #
   #
-  def complete_signup
-    
+  def complete_signup  
   end
   
   

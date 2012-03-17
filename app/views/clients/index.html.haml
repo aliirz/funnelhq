@@ -16,8 +16,8 @@
 
     - @clients.each do |client|
       %tr
-        %td= client.first_name
-        %td= client.last_name
+        %td= link_to client.first_name, client_path(client)
+        %td= link_to client.last_name, client_path(client)
         %td= client.email
         %td= client.telephone
         %td= link_to 'Edit', edit_client_path(client)

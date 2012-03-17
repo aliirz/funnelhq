@@ -16,8 +16,14 @@ class Account
 
   field :time_zone, :default => 'Eastern Time (US & Canada)'
   field :currency, :type => String, :default => 'gbp'
-  field :invoice_message, :default => 'Thank you for your custom. We look forward to working with you again.'
+  field :invoice_message, :default => 'Thank you for your custom. If you have any questions about this invoice please get in touch.'
   field :account_plan, :type => String, :default => 'free'
+  
+  # Business Information
+  
+  field :company_registration_number, :type => String
+  field :end_of_year, :type => String
+  field :hourly_rate, :type => Integer
   
   # Returns a string representation of account currency
   # Example: Account.last.get_currency => '&pound;'

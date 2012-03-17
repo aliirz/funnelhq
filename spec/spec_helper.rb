@@ -33,6 +33,9 @@ end
 
 def login_user
   @user = Factory.create(:user)
+  @user.stub(:invoice_limit_reached?).and_return(false)
+  @user.stub(:project_limit_reached?).and_return(false)
+  @user.stub(:invoice_limit_reached?).and_return(false)
   sign_in @user  
 end
 

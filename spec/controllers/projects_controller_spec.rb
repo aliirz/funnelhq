@@ -5,8 +5,7 @@ describe ProjectsController do
   before :each do
     login_user
   end
-  
-  # Update this when the model changes
+
   def valid_attributes
     {:title => "New project", :description => "This is a new project"}
   end
@@ -48,12 +47,14 @@ describe ProjectsController do
       end
 
       it "assigns a newly created project as @project" do
+        Project.any_instance.stub(:limit_not_exceeded).and_return(true)
         post :create, :project => valid_attributes
         assigns(:project).should be_a(Project)
         assigns(:project).should be_persisted
       end
 
       it "redirects to the created project" do
+        Project.any_instance.stub(:limit_not_exceeded).and_return(true)
         post :create, :project => valid_attributes
         response.should redirect_to assigns(:project)
       end
@@ -83,12 +84,14 @@ describe ProjectsController do
       end
 
       it "assigns the requested project as @project" do
+        Project.any_instance.stub(:limit_not_exceeded).and_return(true)
         project = @user.projects.create! valid_attributes
         put :update, :id => project.id, :project => valid_attributes
         assigns(:project).should eq(project)
       end
 
       it "redirects to the project" do
+        Project.any_instance.stub(:limit_not_exceeded).and_return(true)
         project = @user.projects.create! valid_attributes
         put :update, :id => project.id, :project => valid_attributes
         response.should redirect_to(project)
@@ -123,5 +126,4 @@ describe ProjectsController do
       response.should redirect_to(projects_url)
     end
   end
-
 end

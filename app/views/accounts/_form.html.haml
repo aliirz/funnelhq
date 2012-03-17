@@ -11,10 +11,24 @@
     = f.label :time_zone
     = f.time_zone_select( "time_zone", nil, :default => "Pacific Time (US & Canada)" )
 
+  %h2 Finance
+
   .field
     = f.label :currency
     = f.select :currency, current_user.account.currency_array.map{|curr| [curr.upcase, curr]}
 
+  .field
+    = f.label :company_registration_number
+    = f.text_field :company_registration_number, :placeholder => 'keep it safe here'
+
+  .field
+    = f.label :end_of_year
+    = f.text_field :end_of_year, :placeholder => 'DD/MM/YY'
+
+  .field
+    = f.label :hourly_rate
+    = f.text_field :hourly_rate, :placeholder => 'How much do you charge per hour?'
+	
   .field
     = f.label :invoice_message
     = f.text_area :invoice_message, :rows => 5

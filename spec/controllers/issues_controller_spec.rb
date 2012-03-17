@@ -56,21 +56,18 @@ describe IssuesController do
         assigns(:issue).should be_persisted
       end
 
-      it "redirects to the created issue" do
-        
+      it "redirects to the created issue" do 
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved issue as @issue" do
-        # Trigger the behavior that occurs when invalid params are submitted
         @user.issues.any_instance.stub(:save).and_return(false)
         post :create, :issue => {}
         assigns(:issue).should be_a_new(Issue)
       end
 
       it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
         @user.issues.any_instance.stub(:save).and_return(false)
         post :create, :issue => {}
         response.should render_template("new")
@@ -102,7 +99,6 @@ describe IssuesController do
     describe "with invalid params" do
       it "assigns the issue as @issue" do
         issue = @user.issues.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
         @user.issues.any_instance.stub(:save).and_return(false)
         put :update, :id => issue.id, :issue => {}
         assigns(:issue).should eq(issue)
@@ -110,7 +106,6 @@ describe IssuesController do
 
       it "re-renders the 'edit' template" do
         issue = @user.issues.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
         @user.issues.any_instance.stub(:save).and_return(false)
         put :update, :id => issue.id, :issue => {}
         response.should render_template("edit")
@@ -129,5 +124,4 @@ describe IssuesController do
       response.should redirect_to(issues_url)
     end
   end
-
 end
