@@ -141,6 +141,7 @@ GEM
     rake (0.9.2.2)
     rdoc (3.12)
       json (~> 1.4)
+    recurly (2.0.8)
     rspec (2.8.0)
       rspec-core (~> 2.8.0)
       rspec-expectations (~> 2.8.0)
@@ -196,6 +197,7 @@ DEPENDENCIES
   mongoid-rspec
   rails (= 3.2.0)
   rails-backbone
+  recurly
   rspec-rails (>= 2.8.0.rc1)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)

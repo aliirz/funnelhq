@@ -6,7 +6,7 @@ class AccountsController < ApplicationController
   
   before_filter :find_account, :only => [:show, :edit, :update]
   
-  skip_before_filter :authenticate_user!, :only => [:new, :create]
+  skip_before_filter :authenticate_user!, :only => [:new, :create, :complete_signup]
   
   def index
     @accounts = Account.all
@@ -15,29 +15,30 @@ class AccountsController < ApplicationController
   def new
     @account = Account.new
     @account.users.build
-    @plan = params[:plan_name]
+    @plan = params[:account_plan]
     
     respond_to do |format|
        format.html {render :layout => 'pages'}
     end
   end
   
-  def create
-    
+  def create 
     @account = Account.new(params[:account])
- 
-    #@account.account_plan_id = @account_plan.id
-  
+    @account.account_plan = params[:account_plan]
     respond_to do |format|
       if @account.save
         format.html {
-          redirect_to "http://funnelhq.com/users/login"
-          #@account.recurly_account_code = @account.id
-          #@account.save
-          #redirect_to @account.account_plan.recurly_signup_link(@account.users.first)
+          if @account.free_plan?
+            redirect_to "/users/login"
+          else
+            redirect_to @account.recurly_signup_link
+          end
         }
       else
-        format.html { render :new, :layout => 'pages' }
+        format.html {
+          flash[:notice] = "The user was successfully created"
+          redirect_to new_account_path :account_plan => params[:account_plan]
+        }
       end
     end
   end
@@ -46,6 +47,7 @@ class AccountsController < ApplicationController
   end
 
   def edit
+    @recurly_account = Recurly::Account.find(@account.id)
   end
   
   def update
@@ -53,18 +55,21 @@ class AccountsController < ApplicationController
       if @account.update_attributes(params[:account])
         format.html { redirect_to @account, notice: 'Account was successfully updated.' }
       else
-        format.html { render action: "edit" }
+        format.html { render :edit }
       end
     end
   end
   
-  private
-  
   #
-  #
-  def complete_signup  
+  # Recurly callback URL
+  def complete_signup 
+    @account = Account.find(params[:id])
+    @account.signup_complete = true
+    @account.save
+    redirect_to "http://www.funnelhq.com"
   end
   
+  private
   
   def find_account
     @account = Account.find(params[:id])
@@ -75,5 +80,4 @@ class AccountsController < ApplicationController
   def verify_primary_account_holder
     redirect_to dashboard_path and return
   end
-  
 end

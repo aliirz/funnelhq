@@ -19,6 +19,10 @@ class Account
   field :invoice_message, :default => 'Thank you for your custom. If you have any questions about this invoice please get in touch.'
   field :account_plan, :type => String, :default => 'free'
   
+  # Subscription
+  
+  field :signup_complete, :type => Boolean, :default => false
+
   # Business Information
   
   field :company_registration_number, :type => String
@@ -51,5 +55,28 @@ class Account
   
   def get_setting(plan, setting)
     Account.const_get(plan.upcase)["#{setting}_limit".to_sym]
-  end  
+  end 
+  
+  
+  #
+  #
+  def recurly_signup_link
+    user = self.users.first
+    params = "?email=#{user.email}&first_name=#{user.first_name}&last_name=#{user.last_name}"
+    "https://funnel.recurly.com/subscribe/#{self.account_plan}/#{self.id}" << params
+  end
+  
+  
+  # Returns true if this is a free account plan
+  #
+  def free_plan?
+    self.account_plan == 'free'
+  end
+  
+  
+  # Return true if the user has completed the Recurly signup
+  #
+  def signup_complete?
+    self.signup_complete
+  end   
 end

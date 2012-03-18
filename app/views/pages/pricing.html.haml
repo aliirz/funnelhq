@@ -15,7 +15,7 @@
       %tr
         %td.opaque Projects
         %td 2
-        %td 10
+        %td 20
         %td 100
 
       %tr
@@ -39,11 +39,11 @@
       %tr
         %td.opaque
         %td
-          %a.button.orange{:href => '/accounts/new/free'} Sign Up
+          %a.button.orange{:href => '/accounts/new?account_plan=free'} Sign Up
         %td
-          /%a.button.orange{:href => '/accounts/new/free'} Sign Up
+          %a.button.orange{:href => '/accounts/new?account_plan=standard'} Sign Up
         %td
-          /%a.button.orange{:href => '/accounts/new/free'} Sign up
+          %a.button.orange{:href => '/accounts/new?account_plan=pro'} Sign up
       
     = render 'shared/pages/faq'	
 

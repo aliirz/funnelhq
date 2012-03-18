@@ -4,7 +4,7 @@ class UserObserver < Mongoid::Observer
 
   def after_create(user)
     unless Rails.env == "test"
-      UserMailer.welcome_email(user).deliver
+      #UserMailer.welcome_email(user).deliver
     end
   end 
 end

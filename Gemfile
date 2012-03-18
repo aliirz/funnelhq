@@ -33,6 +33,10 @@ gem 'mongoid-paperclip', :require => 'mongoid_paperclip'
 # Pagination for Rails 3
 gem 'kaminari'
 
+# Recurly subscriptions
+
+gem 'recurly'
+
 group :development, :test do
   gem 'rspec-rails', '>= 2.8.0.rc1'
   gem 'mongoid-rspec'

@@ -10,7 +10,12 @@ end
 
 def create_user first_name, last_name, email, password
   puts 'SETTING UP DEFAULT USER LOGIN'
+  account = Account.new
+  account.signup_complete = true
+  account.save
   user = User.create! :first_name => first_name, :last_name => last_name, :email => email, :password => password, :password_confirmation => password, :invite_code => User::CODES.first
+  user.account = account
+  user.save
   puts 'New user created: ' << user.email
 end
 
@@ -35,9 +40,9 @@ empty_database!
 # Add a default user
 create_user('Owain', 'Lewis', 'admin@test.com', 'testing')
 
+# Create some random projects and clients
 create_random_client 'John Doe', 'jdoe@test.com', '07846123456'
 create_random_client 'Steve Jobs', 'steve@apple.com', '07846345123'
-
 create_random_project 'Build new website', 'My test project. Build a new website for Nike'
 create_random_project 'Learn Scala', 'Learn to program in Scala'
 

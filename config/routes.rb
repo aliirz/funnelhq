@@ -2,11 +2,14 @@ Baseapp::Application.routes.draw do
 
   # The front end site
   
-  get "pages/index"
+  get 'pages/index'
   
-  match "/pricing", :to => "pages#pricing"
+  match 'pricing', :to => 'pages#pricing'
   
   match 'accounts/new/:plan_name', :to => 'accounts#new', :as => 'signup'
+  
+  # Recurly callback
+  match 'accounts/complete_signup/:id', :to => 'accounts#complete_signup', :as => 'complete_signup'
   
   devise_for :users, 
              :path_names => { :sign_in => 'login', 
@@ -17,7 +20,7 @@ Baseapp::Application.routes.draw do
   
   # When we log in a user through Devise, redirect them to the dashboard
   
-  match '/user', :to => 'dashboards#index', :as => :user_root
+  match 'user', :to => 'dashboards#index', :as => :user_root
   
   # Project dashboard
   
@@ -33,8 +36,7 @@ Baseapp::Application.routes.draw do
   resources :invoices
   resources :expenses
   
-  match "finances", :to => 'finances#index'
-  
+  match 'finances', :to => 'finances#index'
   match 'uploads/:user_id/share/:id', :to => 'uploads#share' 
   match 'invoices/view/:id', :to => 'invoices#view' 
   
@@ -48,6 +50,6 @@ Baseapp::Application.routes.draw do
      
   # Default route
   
-  root :to => "pages#index"
+  root :to => 'pages#index'
 
 end
