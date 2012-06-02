@@ -8,13 +8,6 @@ Funnel is built on Ruby on Rails, Clojure and MongoDB.
 
 ![](https://github.com/owainlewis/funnelhq/raw/master/public/preview.png)
 
-A live version is running at http://funnelhq.herokuapp.com. Please don't use the live site for anything other than demo purposes as it's likely that the database will be reset prior to launch.
-
-You can login with the following email and password: 
-
-+ email: admin@test.com 
-+ password: testing
-
 ## Technology
 
 + MongoDB (Storage)
