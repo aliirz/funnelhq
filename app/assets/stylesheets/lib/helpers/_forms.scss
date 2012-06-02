@@ -151,15 +151,9 @@ input[type="week"] {
   *height: auto;
 }
 
-::-webkit-input-placeholder {
-  color: $gray;
-  text-transform:uppercase;
-}
-
-input:-moz-placeholder,
+::-webkit-input-placeholder, input:-moz-placeholder,
 textarea:-moz-placeholder {
-  color: $gray;
-  text-transform:uppercase;
+  color: #eee;
 }
 
 :invalid {

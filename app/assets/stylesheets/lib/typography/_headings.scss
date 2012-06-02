@@ -1,10 +1,10 @@
 h1,h2,h3,h4,h5,h6 {
   margin-bottom: $baseline;
   color: $dark-blue;
-  font-weight: normal;
+  font-weight: 600;
   line-height:40px;
   text-transform:capitalize;
-  font-family:$serif;
+  font-family:$sans;
 }
 
 h1 {

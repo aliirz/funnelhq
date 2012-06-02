@@ -13,10 +13,11 @@ class ApplicationController < ActionController::Base
   
   private 
   
-  # Used in all controllers to find the current user
+  # Used in all controllers to find the current user. 
+  # Cached to speed it up
 
   def find_user
-    @user = current_user
+    @user ||= current_user
   end
   
   # Set the time zone for a user account
@@ -32,7 +33,7 @@ class ApplicationController < ActionController::Base
   # Checks if an account holder has completed the signup process
   #
   def check_signup_complete!
-    if user_signed_in? && !current_user.account.free_plan?
+    if current_user && current_user.account && !current_user.account.free_plan?
       unless @user.account.signup_complete == true
         sign_out :user 
         redirect_to "/"

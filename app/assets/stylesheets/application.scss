@@ -33,17 +33,13 @@ body {
 }
 
 .container {
-  max-width: 978px;
-  margin: 0 auto;
-  padding: 20px;
-  overflow: hidden;
+
 }
 
 #nav {
   height: 40px;
   background:darken($dark-blue,9%);
   width: 100%;
-  margin-bottom: 20px;
   position:relative;
   z-index:99;
 }
@@ -71,6 +67,7 @@ body {
   position: absolute;
   top: 0px;
   height: 100%;
+  border-right:1px solid darken(#E2E9F1,10%);
 
   li {
     list-style: none;
@@ -105,14 +102,17 @@ body {
 }
 
 #main {
-  max-width: 960px;
   width:100%;
-  margin-left: 243px;
   overflow: auto;
   min-height:500px;
-  background: #fff;
-  border:1px solid $borders;
-  padding: 20px;@include border-radius(5px)
+  background:#FFF;
+  position:absolute;
+  left:220px;
+
+  .inner-container { 
+    margin:20px;
+    max-width:80%;
+  }
 }
 
 .update {
@@ -280,9 +280,7 @@ Sharing CSS
   margin: 0 auto;
   background: #fff;
   padding: 40px;
-  -moz-box-shadow: 1px 2px 2px #999;
-  -webkit-box-shadow: 1px 2px 2px #999;
-  box-shadow: 1px 2px 2px #999;
+  min-height:600px;
 }
 
 #share img {
@@ -312,7 +310,7 @@ Invoices
 
 -----------------------------------*/
 
-#invoice_view, #invoice_view body {background:#eee;}
+#invoice_view, #invoice_view body {background:#444;}
 
 #add_line_item {
   float:right;

@@ -4,5 +4,5 @@
 -if @upload.image?
   %img{:src => @upload.file, :alt => @upload.title}
 - else
-  %br
-  =link_to 'Download file', @upload.path
+  %p.center
+    =link_to 'Download file', @upload.path

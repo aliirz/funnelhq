@@ -1,10 +1,10 @@
 #signup_form
   = render 'shared/flash'
   .span-8
-    %h3 You're just 60 seconds away from a new Funnel account
+    %h3 Quick Signup
 
     .form
-      = form_for @account do |f|
+      = form_for @account, :url => {:action => :create, :account_plan => @plan} do |f|
 
         -if @account.errors.any?
           #error_explanation
@@ -29,8 +29,11 @@
 
           = user.label :password_confirmation
           = user.password_field :password_confirmation
+
           = hidden_field_tag :account_plan, @plan
+
         - unless @plan == 'free'
+
           %h2 Your billing information
           %p== You will now be sent to our billing page. We need this information to verify that you have a valid credit card and to help reduce fraud. You won’t be charged a thing unless you keep your account open longer than the 30 day free trial, which will end on #{Date.today + 30.days}
      

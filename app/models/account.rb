@@ -8,7 +8,7 @@ class Account
   STANDARD =   { :project_limit => 20, :upload_limit => 50000, :invoice_limit => 10 }
   PRO =        { :project_limit => 100, :upload_limit => 100000, :invoice_limit => 50 }
   
-  references_many :users, :inverse_of => :account, :autosave => true
+  references_many :users, :inverse_of => :account, :autosave => true, dependent: :delete
   
   accepts_nested_attributes_for :users
   
@@ -56,8 +56,7 @@ class Account
   def get_setting(plan, setting)
     Account.const_get(plan.upcase)["#{setting}_limit".to_sym]
   end 
-  
-  
+   
   #
   #
   def recurly_signup_link
@@ -66,13 +65,11 @@ class Account
     "https://funnel.recurly.com/subscribe/#{self.account_plan}/#{self.id}" << params
   end
   
-  
   # Returns true if this is a free account plan
   #
   def free_plan?
     self.account_plan == 'free'
   end
-  
   
   # Return true if the user has completed the Recurly signup
   #

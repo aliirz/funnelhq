@@ -9,6 +9,7 @@ class PagesController < ApplicationController
   # Application static homepage
   
   def index
+    
   end
   
   def pricing

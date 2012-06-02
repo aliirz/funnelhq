@@ -3,9 +3,7 @@ class AccountsController < ApplicationController
   # We will restrict access to the main accounts page for 
   
   before_filter :verify_primary_account_holder, :only => [:index]
-  
   before_filter :find_account, :only => [:show, :edit, :update]
-  
   skip_before_filter :authenticate_user!, :only => [:new, :create, :complete_signup]
   
   def index
@@ -36,8 +34,8 @@ class AccountsController < ApplicationController
         }
       else
         format.html {
-          flash[:notice] = "The user was successfully created"
-          redirect_to new_account_path :account_plan => params[:account_plan]
+          @plan = params[:account_plan]
+          render :new, :layout => 'pages'
         }
       end
     end
@@ -47,7 +45,6 @@ class AccountsController < ApplicationController
   end
 
   def edit
-    @recurly_account = Recurly::Account.find(@account.id)
   end
   
   def update

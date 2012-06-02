@@ -2,14 +2,19 @@ Baseapp::Application.routes.draw do
 
   # The front end site
   
-  get 'pages/index'
+  get 'pages/index', :via => [:get]
   
-  match 'pricing', :to => 'pages#pricing'
+  match 'pricing', :to => 'pages#pricing', :via => [:get]
   
-  match 'accounts/new/:plan_name', :to => 'accounts#new', :as => 'signup'
+  match 'accounts/new/:plan_name', :to => 'accounts#new', :as => 'signup', :via => [:get]
   
   # Recurly callback
-  match 'accounts/complete_signup/:id', :to => 'accounts#complete_signup', :as => 'complete_signup'
+  match 'accounts/complete_signup/:id', :to => 'accounts#complete_signup', :as => 'complete_signup', :via => [:get]
+  
+  # Recurly subscriptions
+  
+  match '/subscriptions', :to => 'subscriptions#index', :via => [:get]
+  match '/subscriptions/close_account', :to => 'subscriptions#close_account', :via => [:get]
   
   devise_for :users, 
              :path_names => { :sign_in => 'login', 
@@ -20,14 +25,15 @@ Baseapp::Application.routes.draw do
   
   # When we log in a user through Devise, redirect them to the dashboard
   
-  match 'user', :to => 'dashboards#index', :as => :user_root
+  match 'user', :to => 'dashboards#index', :as => :user_root, :via => [:get]
   
   # Project dashboard
   
-  match 'dashboard', :to => 'dashboards#index'
+  match 'dashboard', :to => 'dashboards#index', :via => [:get]
   
   # Resource routes
   resources :accounts
+  resources :subscriptions
   resources :projects
   resources :issues
   resources :uploads
@@ -36,9 +42,9 @@ Baseapp::Application.routes.draw do
   resources :invoices
   resources :expenses
   
-  match 'finances', :to => 'finances#index'
-  match 'uploads/:user_id/share/:id', :to => 'uploads#share' 
-  match 'invoices/view/:id', :to => 'invoices#view' 
+  match 'finances', :to => 'finances#index', :via => [:get]
+  match 'uploads/:user_id/share/:id', :to => 'uploads#share', :via => [:get]
+  match 'invoices/view/:id', :to => 'invoices#view', :via => [:get]
   
   # API 
   
@@ -50,6 +56,6 @@ Baseapp::Application.routes.draw do
      
   # Default route
   
-  root :to => 'pages#index'
+  root :to => 'pages#index', :via => [:get]
 
 end
