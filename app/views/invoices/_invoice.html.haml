@@ -6,7 +6,10 @@
   %p.invoice_line== Invoice Date: #{@invoice.date}
 
   %p.invoice_line== To: #{@client.name}
-  %p.invoice_line== From: #{@usr.name}
+  - if current_user.present?
+    %p.invoice_line== From: #{current_user.name}
+  - else
+    %p.invoice_line== From: #{@usr.name}
 
   %p 
     Payment Due:
@@ -28,6 +31,10 @@
           %td= line_item.price
           %td= (line_item.qty * line_item.price)
 
-  %h2== Total #{user_currency(@invoice.total, @usr)}
-
-  = @usr.account.invoice_message
+  - if current_user.present?
+    %h2== Total #{user_currency(@invoice.total)}
+    = current_user.account.invoice_message
+  - else
+    %h2== Total #{user_currency(@invoice.total, @usr)}
+    = @usr.account.invoice_message
+   
