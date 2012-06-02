@@ -2,7 +2,7 @@ class InvoicesController < ApplicationController
   
   respond_to :html
   
-  before_filter :find_invoice, :only => [:show, :edit, :update, :destroy, :view]
+  before_filter :find_invoice, :only => [:show, :edit, :update, :destroy]
   
   skip_before_filter :authenticate_user!, :only => [:view]
   
@@ -62,7 +62,9 @@ class InvoicesController < ApplicationController
   
   # Allows users to share invoices with clients
   def view
-    @client = @user.clients.find(@invoice.client_id)
+    @usr = User.find(params[:user_id])
+    @invoice = @usr.invoices.find(params[:id])
+    @client = @usr.clients.find(@invoice.client_id)
     render :layout => 'invoice'
   end
   

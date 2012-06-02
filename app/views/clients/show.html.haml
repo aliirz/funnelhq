@@ -2,9 +2,15 @@
 
 = avatar_url(@client)
 
+%p== First Name: #{@client.first_name}
+%p== Last Name: #{@client.last_name}
 %p== Email: #{@client.email}
 %p== Phone: #{@client.telephone}
 
-= link_to 'Edit', edit_client_path(@client)
-\|
-= link_to 'Back', clients_path
+%h3 Address
+
+- if @client.address1.present?
+ 
+  %p= @client.full_address
+ 
+%p= link_to 'Edit', edit_client_path(@client) 

@@ -2,7 +2,7 @@
 
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px;
-  color: #0f1113;
+  color: #343F4A;
   font-weight: bold;
   line-height: 1.5;
   font-family: "Lato", Helvetica, Arial, sans-serif; }
@@ -85,7 +85,7 @@ p {font-family:$serif;}
   clear:both;
   border: 1px solid #ccc;
   margin-bottom: 20px; }
-  #main h1, #main h2 {
+  #main h2 {
     font-family: "CallunaRegular", Georgia, serif;
     font-weight: 100; }
 
@@ -95,8 +95,9 @@ p {font-family:$serif;}
   #section1 #headline {
     text-align: center;
     clear: both;
+    color:#343F4A;
     position: relative;
-    font-weight:100;
+    font-weight:500;
     top: 24px; }
   #section1 #tagline {
     text-align: center;

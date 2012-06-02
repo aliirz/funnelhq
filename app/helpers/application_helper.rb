@@ -5,11 +5,11 @@ module ApplicationHelper
   # @param 
   # @return
   
-  def user_currency(val)
-    unit = current_user.account.get_currency
+  def user_currency(val, user=current_user)
+    unit = user.account.get_currency
     number_to_currency(val, :unit => unit, :separator => ",", :delimiter => "")
   end
-  
+
   # Returns a pretty formatted date
   #
   # @param 

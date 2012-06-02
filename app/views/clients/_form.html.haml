@@ -1,6 +1,8 @@
 = form_for @client do |f|
   
   = render 'shared/error_messages', :target => @client
+  
+  %h3 Basic Info
 
   .field
     = f.label :first_name
@@ -14,5 +16,18 @@
   .field
     = f.label :telephone
     = f.text_field :telephone, :placeholder => 'landline number'
+    
+  %h3 Address
+  
+  .field
+    = f.label :address1
+    = f.text_field :address1
+  .field
+    = f.label :address2
+    = f.text_field :address2
+  .field
+    = f.label :address3
+    = f.text_field :address3
+    
   .actions
     = f.submit 'Save'

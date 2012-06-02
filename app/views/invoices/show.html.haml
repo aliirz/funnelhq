@@ -7,5 +7,5 @@
 
 %p Your clients will be able to view this invoice online at the following URL
 %code
-  - public_url = "#{root_url}invoices/view/#{@invoice.id}"
+  - public_url = "#{root_url}invoices/#{@user.id}/view/#{@invoice.id}"
   #{public_url} (#{link_to 'view', public_url})

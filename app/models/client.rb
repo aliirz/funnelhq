@@ -10,6 +10,9 @@ class Client
   field :last_name, :type => String
   field :email, :type => String
   field :telephone, :type => String
+  field :address1, :type => String
+  field :address2, :type => String
+  field :address3, :type => String
   
   ## Validation ##
   
@@ -29,6 +32,14 @@ class Client
   
   def full_name
     "#{self.first_name} #{self.last_name}"
+  end
+  
+  # Return a users full address as a string
+  # @return [String]
+  #
+  
+  def full_address
+    "#{self.address1}, #{self.address2}, #{self.address3}"
   end
   
   # I find name quicker to remember
