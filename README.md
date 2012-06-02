@@ -6,7 +6,7 @@ This is an open source version of the app running at funnelhq.com aimed at those
 
 Funnel is built on Ruby on Rails, Clojure and MongoDB.
 
-![](http://funnelhq.com/public/images/3.jpg)
+![](https://github.com/owainlewis/funnelhq/raw/master/public/preview.png)
 
 A live version is running at http://funnelhq.herokuapp.com. Please don't use the live site for anything other than demo purposes as it's likely that the database will be reset prior to launch.
 
