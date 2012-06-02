@@ -17,11 +17,9 @@ You can login with the following email and password:
 
 ## Technology
 
-This app uses 
-
-+ MongoDB
++ MongoDB (Storage)
 + Rails 3
-+ Clojure
++ Clojure (Analysis and Analytics)
 + Amazon S3 for file storage
 
 ## Install
@@ -38,10 +36,12 @@ Due to the open source nature of this app, environment variables are used to set
  
     export MAIL_USER=awesomeuser@gmail.com
 
-The following environment variables are required
+The following environment variables are required. This is likely to trip you up the first time you're setting up the app.
 
 + MAIL_USER
 + MAIL_PASS 
++ RECURLY_API_KEY
++ RECURLY_JS_PRIVATE_KEY
 
 ## Creating a test user
 
@@ -80,4 +80,3 @@ Example API call to get all projects
 This software is provided free for users hosting it on their on system.
 
 A hosted version will be available at funnelhq.com.
-
