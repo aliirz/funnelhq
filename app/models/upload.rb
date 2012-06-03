@@ -5,23 +5,20 @@ class Upload
   
   CATEGORY = %w(document design contract file).map {|type| type.camelize}.sort
   
-  # This could be extracted into a more elegant set of config options.
+  # This is for Amazon S3 only. If you want to store files locally use 
+  # has_mongoid_attached_file :file 
+  # Then delete the lines below
+  
+  has_mongoid_attached_file :file,
+    :storage => :s3,
+    :bucket => ENV['S3_BUCKET'],
+      :s3_credentials => {
+      :access_key_id => ENV['S3_KEY'],
+      :secret_access_key => ENV['S3_SECRET']
+  }
+  
+  # End S3 Upload
 
-  if Rails.env.production?
-    has_mongoid_attached_file :file,
-      :storage => :s3,
-        :s3_credentials => {
-          :access_key_id => ENV['S3_KEY'],
-          :secret_access_key => ENV['S3_SECRET']
-        },
-        :bucket => ENV['S3_BUCKET'],
-        :s3_permissions => :public,
-        :url => "/assets/:user_id/:id/:style/:filename"
-        
-  else
-    has_mongoid_attached_file :file 
-  end
-    
   ## Validation ##
   
   validates_presence_of :title
