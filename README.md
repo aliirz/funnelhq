@@ -2,6 +2,8 @@
 
 Funnel is an open source business management tool for freelancers. With Funnel you can manage your entire business from one centralised location. Track your expenses, invoice clients, manage projects, store important documents and more.
 
+A central part of the application yet to be implemented will be the ability to share a dashboard with your clients letting them keep updated with projects, view designs, documents etc all in one place.
+
 This is an open source version of the app running at funnelhq.com aimed at those who want to host this app on their own servers. 
 
 Funnel is built on Ruby on Rails, Clojure and MongoDB.
