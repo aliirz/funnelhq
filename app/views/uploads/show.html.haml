@@ -1,7 +1,7 @@
 %h2= @upload.title
 %p= @upload.category
 
-%p=link_to 'Download', @upload.file.to_s
+%p=link_to 'Download', @upload.file.expiring_url(60)
 
 - if @upload.is_public?
   %p Copy the URL below to share your file with others.
@@ -10,7 +10,7 @@
       ="#{root_url}uploads/#{@user.id}/share/#{@upload.id}"
 
 - if @upload.image?
-  %img{:src => @upload.file, :alt => @upload.title}
+  %img{:src => @upload.file.expiring_url(60), :alt => @upload.title}
 
 %br 
 

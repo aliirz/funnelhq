@@ -51,6 +51,22 @@ class ClientsController < ApplicationController
     end
   end
   
+  # 
+  # This is the client dashboard where users can share project 
+  # information with clients. It will list all projects associated
+  # with the client and show messages from the user to the client.
+  # It should also give a general overview of a project progress. (i.e working on design etc)
+  #
+  # Requires a separate layout and also it should be available without authentication.
+  #
+  # url => /clients/:user_id/:id/dashboard
+  #
+  def dashboard
+    @owner = User.find(params[:user_id])
+    @client = @owner.clients.find(params[:id])
+    render :layout => 'share'
+  end
+  
   private 
   
   def find_client

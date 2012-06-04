@@ -1,8 +1,8 @@
 %h1.center= @upload.title
-%p.center== #{@user.name} wants to share a file with you. You are free to download this file.
+%p.center== #{@user.name} wants to share a file with you. Link will expire after a minute.
 
 -if @upload.image?
   %img{:src => @upload.file, :alt => @upload.title}
 - else
   %p.center
-    =link_to 'Download file', @upload.path
+    =link_to 'Download file', @upload.file.expiring_url(60)

@@ -1,5 +1,9 @@
 %h1= @client.name
 
+%h3 Dashboard URL
+%p The client dashboard is a url you can share with your clients that will give them updates on their projects.
+%p= link_to 'Client dashboard', @client.dashboard_url(current_user, @client)
+
 = avatar_url(@client)
 
 %p== First Name: #{@client.first_name}

@@ -45,6 +45,7 @@ Baseapp::Application.routes.draw do
   match 'finances', :to => 'finances#index', :via => [:get]
   match 'uploads/:user_id/share/:id', :to => 'uploads#share', :via => [:get]
   match 'invoices/:user_id/view/:id', :to => 'invoices#view', :via => [:get]
+  match 'clients/:user_id/:id/dashboard', :to => 'clients#dashboard', :via => [:get]
   
   # API 
   

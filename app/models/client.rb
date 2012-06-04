@@ -46,4 +46,12 @@ class Client
   
   alias_method :name, :full_name
   
+  
+  #
+  # Every client will have a private dashboard giving information about
+  # their projects and updates from the user.
+  #
+  def dashboard_url(user,client)
+    "/clients/#{user.id}/#{client.id}/dashboard"
+  end
 end
