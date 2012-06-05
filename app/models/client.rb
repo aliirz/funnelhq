@@ -54,4 +54,34 @@ class Client
   def dashboard_url(user,client)
     "/clients/#{user.id}/#{client.id}/dashboard"
   end
+  
+  # ===============================================
+  #
+  # Client data
+  #
+  # Return client specific information for the dashboards. 
+  # In hindsight does this data suit SQL better? 
+  #
+  # ===============================================
+  
+  ##
+  # Returns all projects for this client
+  # 
+  def projects
+    self.user.projects.where(:client_id => self.id.to_s)
+  end
+  
+  ##
+  # Returns all invoices for this client
+  #
+  def invoices
+    self.user.invoices.where(:client_id => self.id.to_s)
+  end
+  
+  ##
+  # Returns all uploads for this client
+  #
+  def uploads
+    self.user.uploads.where(:client_id => self.id.to_s)
+  end
 end

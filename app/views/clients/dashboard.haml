@@ -1,0 +1,14 @@
+%h1 Client Dashboard
+
+%p== Hi there #{@client.name}. This is a place where you can keep track of your projects.
+
+%h3 My Projects
+
+- @client.projects.each do |project|
+  %p= project.title
+  
+%h3 My Invoices
+
+%h3 My Files
+  
+ 
